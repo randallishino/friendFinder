@@ -1,4 +1,4 @@
-// requiring our packages
+// requiring packages
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
@@ -16,3 +16,8 @@ app.use(bodyParser.json());
 app.listen(PORT, function() {
     console.log('Friend Finder app is listening on PORT: ' + PORT);
   });
+  
+
+  require('./app/routing/apiroutes.js')(app); 
+  require('./app/routing/htmlroutes.js')(app);
+  
