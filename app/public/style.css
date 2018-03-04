@@ -1,0 +1,21 @@
+#survey {
+    color: royalblue;
+}
+body {
+    font-family: 'Indie Flower', cursive;
+    font-size: 15px;
+}
+
+h3 {
+    font-size: 30px;
+    color: green;
+}
+
+h4 {
+    color: red;
+}
+
+#jumbo-head {
+    margin-top: 60px;
+    font-size: 40px;
+}
