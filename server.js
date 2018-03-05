@@ -15,8 +15,8 @@ app.use(bodyParser.text());
 
 
 // requiring external routing files
-require('./app/routing/apiroutes.js')(app); 
-require('./app/routing/htmlroutes.js')(app);
+require('./app/routing/apiRoutes.js')(app); 
+require('./app/routing/htmlRoutes.js')(app);
 
 
 // allowing static css
