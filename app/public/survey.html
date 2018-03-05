@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Friend Finder</title>
+	<title>Friend Finder</title>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">   
 	<link rel="stylesheet" href="./style.css"> 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
 </head>
 <body>
 	<div class="container bg-info">
@@ -147,6 +152,29 @@
 		<br>
 		<br>
 
+
+
+		<div id="friends-modal" class="modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h5 class="modal-title">Your Match is</h5>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <h2 id="friend-name"></h2>
+				  <img id="friend-image">
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-primary">Save changes</button>
+				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+
 		<button type="button" id="submit" class="btn btn-primary">Submit</button>
 
 		<hr>
@@ -154,6 +182,42 @@
 	      <div class="container">
 		        <p><a href="/api/friends">API Friends List</a> | 
 	      </div>
-	    </footer>
+		</footer>
+		
+		<script type="text/javascript">
+		
+		// registers user data 
+		$("#submit").on("click",function(event) {
+			event.preventDefault();
+
+			// storing user data and answers
+			var user = {
+				name: $("#name").val().trim(),
+				photo: $("#photo").val().trim(),
+				scores: [
+					$("#q1").val(),
+					$("#q2").val(),
+					$("#q3").val(),
+					$("#q4").val(),
+					$("#q5").val(),
+					$("#q6").val(),
+					$("#q7").val(),
+					$("#q8").val(),
+					$("#q9").val(),
+					$("#q10").val()
+				]
+			};
+
+			$.post("/api/friends",user,function(data) {
+				$("#friend-name").text(data.name);
+				$("#friend-image").attr("src",data.photo);
+
+				$("#friends-modal").modal("toggle");
+			});
+		});
+		
+		
+		
+		</script>
 
 	</div>

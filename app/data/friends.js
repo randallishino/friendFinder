@@ -16,7 +16,6 @@ var friends = [{
     ],
 }];
 
-console.log(friends);
 
 // exporting the friends array for use in other files
 module.exports = friends;

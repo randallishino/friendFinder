@@ -5,11 +5,10 @@ module.exports = function(app) {
 // routing to the root / home page
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, '/../public/home.html'));
-    console.log("working..");
 });
 
 // routing to the survey page
-  app.get("/survey", function(req,res) {
-    res.sendFile(path.join(__dirname,"/../public/survey.html"));
+app.get('/survey', function(req, res){
+  res.sendFile(path.join(__dirname, '/../public/survey.html'));
   });
 };
