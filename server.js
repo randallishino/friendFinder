@@ -7,13 +7,20 @@ var path = require('path');
 var app = express();
 var PORT = 3000;
 
-//r requiring external routing files
-require('./app/routing/apiroutes.js')(app); 
-require('./app/routing/htmlroutes.js')(app);
 
 // sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.text());
+
+
+// requiring external routing files
+require('./app/routing/apiroutes.js')(app); 
+require('./app/routing/htmlroutes.js')(app);
+
+
+// allowing static css
+app.use(express.static(__dirname + "/app/css"));
 
 
 // connection listening
